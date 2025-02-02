@@ -1,0 +1,16 @@
+{
+  "name": "simon-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/Ironmonkeynuts/simon-game.git)"
+  },
+  "author": "",
+  "license": "ISC"
+}
