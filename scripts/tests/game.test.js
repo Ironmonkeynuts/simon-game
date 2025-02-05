@@ -36,6 +36,10 @@ describe("game object contains correct keys", () => {
     test("choices contain correct ids", () => {
         expect(game.choices).toEqual(["button1", "button2", "button3", "button4"]);
     });
+    // Test if turnNumber exists
+    test("turnNumber key exists", () => {
+        expect("turnNumber" in game).toBe(true);
+    });
 });
 
 // Function for testing for correct values
