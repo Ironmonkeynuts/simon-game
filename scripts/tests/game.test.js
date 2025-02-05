@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 // Connect test to game.js
-const { game, newGame } = require("../game");
+const { game, newGame, showScore } = require("../game");
 
 
 // Load index.html in jest
@@ -44,6 +44,7 @@ describe("newGame works correctly", () => {
         game.score = 42;
         game.playerMoves = ["button1", "button2"]
         game.currentGame = ["button1", "button2"]
+        document.getElementById("score").innerText = "42";
         newGame();
     });
     // Test if newGame resets score
@@ -57,5 +58,9 @@ describe("newGame works correctly", () => {
     // Test if newGame resets currentGame
     test("should reset currentGame array", () => {
         expect(game.currentGame.length).toEqual(0);
+    });
+    // Test if newGame displays 0 for the element with id of score
+    test("should display 0 for the element with id of score", () => {
+        expect(document.getElementById("score").innerText).toEqual(0);
     });
 });

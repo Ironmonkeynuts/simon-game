@@ -11,7 +11,13 @@ function newGame() {
     game.currentGame = [];
     game.score = 0;
     game.playerMoves = [];
+    showScore();
+}
+
+function showScore() {
+    // Display score
+    document.getElementById("score").innerText = game.score;
 }
 
 // Export game file
-module.exports = { game, newGame };
+module.exports = { game, newGame, showScore };
