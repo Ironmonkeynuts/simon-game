@@ -16,14 +16,24 @@ beforeAll(() => {
 
 // Function for testing for correct keys
 describe("game object contains correct keys", () => {
-    // Test if game score exists
+    // Test if score exists
     test("score key exists", () => {
         expect("score" in game).toBe(true);
     });
-    // Test if current game exists
+    // Test if currentGame exists
     test("currentGame key exists", () => {
         expect("currentGame" in game).toBe(true);
     });
+    // Test if playerMoves exists
+    test("playerMoves key exists", () => {
+        expect("playerMoves" in game).toBe(true);
+    });
+    // Test if choices exists
+    test("choices key exists", () => {
+        expect("choices" in game).toBe(true);
+    });
+    // Test if choices contains correct ids
+    test("choices contain correct ids", () => {
+        expect(game.choices).toEqual(["button1", "button2", "button3", "button4"]);
+    });
 });
-
-
