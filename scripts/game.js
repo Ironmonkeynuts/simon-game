@@ -27,5 +27,14 @@ function showScore() {
     document.getElementById("score").innerText = game.score;
 }
 
+function lightsOn(circ) {
+    // Add class to button
+    document.getElementById(circ).classList.add("light");
+    // Remove class after 400ms
+    setTimeout(function () {
+        document.getElementById(circ).classList.remove("light");
+    }, 400);
+}
+
 // Export game file
-module.exports = { game, newGame, showScore, addTurn };
+module.exports = { game, newGame, showScore, addTurn, lightsOn };
