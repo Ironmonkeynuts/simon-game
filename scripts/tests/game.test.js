@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 // Connect test to game.js
-const { game, newGame, showScore, addTurn, lightsOn,  } = require("../game");
+const { game, newGame, showScore, addTurn, lightsOn, showTurns } = require("../game");
 
 
 // Load index.html in jest
@@ -90,5 +90,11 @@ describe("game works correctly", () => {
         let button = document.getElementById(game.currentGame[0]);
         lightsOn(game.currentGame[0]);
         expect(button.classList).toContain("light");
+    });
+    // Test if showTurns works correctly
+    test("showTurns should update game.turnNumber", () => {
+        game.turnNumber = 42;
+        showTurns();
+        expect(game.turnNumber).toBe(0);
     });
 });

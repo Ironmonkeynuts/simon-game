@@ -20,6 +20,8 @@ function addTurn() {
     game.playerMoves = [];
     // Add random button to game
     game.currentGame.push(game.choices[(Math.floor(Math.random() * 4))]);
+    // Show turns
+    showTurns();
 }
 
 function showScore() {
@@ -36,5 +38,17 @@ function lightsOn(circ) {
     }, 400);
 }
 
+function showTurns() {
+    // Show turns
+    game.turnNumber = 0;
+    let turns = setInterval(() => {
+        lightsOn(game.currentGame[game.turnNumber]);
+        game.turnNumber++;
+        if (game.turnNumber >= game.currentGame.length) {
+            clearInterval(turns);
+        }
+    }, 800);
+};
+
 // Export game file
-module.exports = { game, newGame, showScore, addTurn, lightsOn };
+module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns };
