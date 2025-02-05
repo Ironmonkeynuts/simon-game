@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 // Connect test to game.js
-const { game } = require("../game");
+const { game, newGame } = require("../game");
 
 
 // Load index.html in jest
@@ -35,5 +35,17 @@ describe("game object contains correct keys", () => {
     // Test if choices contains correct ids
     test("choices contain correct ids", () => {
         expect(game.choices).toEqual(["button1", "button2", "button3", "button4"]);
+    });
+});
+// Function for testing for correct values
+describe("newGame works correctly", () => {
+    // Set up before each test
+    beforeAll(() => {
+        game.score = 42;
+        newGame();
+    });
+    // Test if newGame resets score
+    test("should set game score to zero", () => {
+        expect(game.score).toEqual(0);
     });
 });
