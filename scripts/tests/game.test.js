@@ -42,10 +42,20 @@ describe("newGame works correctly", () => {
     // Set up before each test
     beforeAll(() => {
         game.score = 42;
+        game.playerMoves = ["button1", "button2"]
+        game.currentGame = ["button1", "button2"]
         newGame();
     });
     // Test if newGame resets score
     test("should set game score to zero", () => {
         expect(game.score).toEqual(0);
+    });
+    // Test if newGame resets playerMoves
+    test("should reset playerMoves array", () => {
+        expect(game.playerMoves.length).toEqual(0);
+    });
+    // Test if newGame resets currentGame
+    test("should reset currentGame array", () => {
+        expect(game.currentGame.length).toEqual(0);
     });
 });
