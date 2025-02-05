@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 // Connect test to game.js
-const { game, newGame, showScore } = require("../game");
+const { game, newGame, showScore, addTurn } = require("../game");
 
 
 // Load index.html in jest
@@ -37,6 +37,7 @@ describe("game object contains correct keys", () => {
         expect(game.choices).toEqual(["button1", "button2", "button3", "button4"]);
     });
 });
+
 // Function for testing for correct values
 describe("newGame works correctly", () => {
     // Set up before each test
@@ -55,9 +56,9 @@ describe("newGame works correctly", () => {
     test("should reset playerMoves array", () => {
         expect(game.playerMoves.length).toEqual(0);
     });
-    // Test if newGame resets currentGame
-    test("should reset currentGame array", () => {
-        expect(game.currentGame.length).toEqual(0);
+    // Test if only one move
+    test("should be one move in the computer's game array", () => {
+        expect(game.currentGame.length).toEqual(1);
     });
     // Test if newGame displays 0 for the element with id of score
     test("should display 0 for the element with id of score", () => {
