@@ -65,5 +65,21 @@ function showTurns() {
     }, 800);
 };
 
+function playerTurn() {
+    let i = game.playerMoves.length - 1;
+    if (game.currentGame[i] === game.playerMoves[i]) {
+        if (game.currentGame.length === game.playerMoves.length) {
+            game.score++;
+            showScore();
+            setTimeout(() => {
+                addTurn();
+            }, 1000);
+        }
+    } else {
+        alert("Wrong move!");
+        newGame();
+    }
+}
+
 // Export game file
-module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns };
+module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn };

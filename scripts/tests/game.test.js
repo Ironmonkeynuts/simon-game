@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 // Connect test to game.js
-const { game, newGame, showScore, addTurn, lightsOn, showTurns } = require("../game");
+const { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn } = require("../game");
 
 
 // Load index.html in jest
@@ -107,5 +107,11 @@ describe("game works correctly", () => {
         game.turnNumber = 42;
         showTurns();
         expect(game.turnNumber).toBe(0);
+    });
+    // Test if score is incremented
+    test("should increment the score if the player turns is correct", () => {
+        game.playerMoves.push(game.currentGame[0]);
+        playerTurn();
+        expect(game.score).toBe(1);
     });
 });
