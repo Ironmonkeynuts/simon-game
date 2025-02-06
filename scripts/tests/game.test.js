@@ -1,9 +1,11 @@
 /**
  * @jest-environment jsdom
  */
+
 // Connect test to game.js
 const { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn } = require("../game");
 
+// Call spyOn for alert
 jest.spyOn(window, "alert").mockImplementation(() => { });
 
 // Load index.html in jest
@@ -22,7 +24,7 @@ describe("pre-game", () => {
         document.getElementById("button2").click();
         expect(game.lastButton).toEqual("");
     });
-})
+});
 
 // Function for testing for correct keys
 describe("game object contains correct keys", () => {
@@ -61,6 +63,10 @@ describe("game object contains correct keys", () => {
     // Test if turnInProgress is false
     test("turnInProgress key value is false", () => {
         expect("turnInProgress" in game).toBe(true);
+    });
+    // Test if lastButton is empty
+    test("lastButton key value is empty", () => {
+        expect(game.lastButton).toEqual("");
     });
 });
 

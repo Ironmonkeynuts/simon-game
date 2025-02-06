@@ -42,11 +42,6 @@ function addTurn() {
     showTurns();
 }
 
-function showScore() {
-    // Display score
-    document.getElementById("score").innerText = game.score;
-}
-
 function lightsOn(circ) {
     // Add class to button
     document.getElementById(circ).classList.add("light");
@@ -84,6 +79,11 @@ function playerTurn() {
         alert("Wrong move!");
         newGame();
     }
+}
+
+function showScore() {
+    // Display score
+    document.getElementById("score").innerText = game.score;
 }
 
 // Export game file
