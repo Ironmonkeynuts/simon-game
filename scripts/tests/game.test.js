@@ -124,11 +124,6 @@ describe("game works correctly", () => {
         lightsOn(game.currentGame[0]);
         expect(button.classList).toContain("light");
     });
-    //  Test if turnInProgress is toggled to true
-    test("should toggle turnInProgress to true", () => {
-        showTurns();
-        expect(game.turnInProgress).toBe(true);
-    });
     // Test if showTurns works correctly
     test("showTurns should update game.turnNumber", () => {
         game.turnNumber = 42;
@@ -147,11 +142,16 @@ describe("game works correctly", () => {
         playerTurn();
         expect(window.alert).toBeCalledWith("Wrong move!");
     });
+    //  Test if turnInProgress is toggled to true
+    test("should toggle turnInProgress to true", () => {
+        showTurns();
+        expect(game.turnInProgress).toBe(true);
+    });
     // Test if clicking during computer sequence fails
     test("clicking during computer sequence should fail", () => {
         showTurns();
         game.lastButton = "";
-        document.getElementById("button2").click();
+        document.getElementById("button2").click(); // Clear clicks
         expect(game.lastButton).toEqual("");
     });
 });
