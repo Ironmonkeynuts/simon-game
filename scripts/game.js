@@ -12,6 +12,20 @@ function newGame() {
     game.currentGame = [];
     game.score = 0;
     game.playerMoves = [];
+    // Loop data-listener for circles
+    for (let circle of document.getElementsByClassName("circle")) {
+        if (circle.getAttribute("data-listener") !== "true") {
+            circle.addEventListener("click", (e) => {
+                if (game.currentGame.length > 0) {
+                    let move = e.target.getAttribute("id");
+                    game.playerMoves.push(move);
+                    lightsOn(move);
+                    playerTurn();
+                }
+            });
+            circle.setAttribute("data-listener", "true");
+        }
+    }
     showScore();
     addTurn();
 }
