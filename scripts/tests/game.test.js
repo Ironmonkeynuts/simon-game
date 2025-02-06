@@ -15,6 +15,15 @@ beforeAll(() => {
     document.close();
 });
 
+describe("pre-game", () => {
+    // Test if clicking buttons before newGame should fail
+    test("clicking buttons before newGame should fail", () => {
+        game.lastButton = "";
+        document.getElementById("button2").click();
+        expect(game.lastButton).toEqual("");
+    });
+})
+
 // Function for testing for correct keys
 describe("game object contains correct keys", () => {
     // Test if score exists
@@ -40,6 +49,18 @@ describe("game object contains correct keys", () => {
     // Test if turnNumber exists
     test("turnNumber key exists", () => {
         expect("turnNumber" in game).toBe(true);
+    });
+    // Test if lastButton exists
+    test("lastButton key exists", () => {
+        expect("lastButton" in game).toBe(true);
+    });
+    // Test if turnInProgress exists
+    test("turnInProgress key exists", () => {
+        expect("turnInProgress" in game).toBe(true);
+    });
+    // Test if turnInProgress is false
+    test("turnInProgress key value is false", () => {
+        expect("turnInProgress" in game).toBe(true);
     });
 });
 
@@ -103,6 +124,11 @@ describe("game works correctly", () => {
         lightsOn(game.currentGame[0]);
         expect(button.classList).toContain("light");
     });
+    //  Test if turnInProgress is toggled to true
+    test("should toggle turnInProgress to true", () => {
+        showTurns();
+        expect(game.turnInProgress).toBe(true);
+    });
     // Test if showTurns works correctly
     test("showTurns should update game.turnNumber", () => {
         game.turnNumber = 42;
@@ -120,5 +146,12 @@ describe("game works correctly", () => {
         game.playerMoves.push("wrong");
         playerTurn();
         expect(window.alert).toBeCalledWith("Wrong move!");
+    });
+    // Test if clicking during computer sequence fails
+    test("clicking during computer sequence should fail", () => {
+        showTurns();
+        game.lastButton = "";
+        document.getElementById("button2").click();
+        expect(game.lastButton).toEqual("");
     });
 });
