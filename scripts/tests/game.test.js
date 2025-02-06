@@ -4,6 +4,7 @@
 // Connect test to game.js
 const { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn } = require("../game");
 
+jest.spyOn(window, "alert").mockImplementation(() => { });
 
 // Load index.html in jest
 beforeAll(() => {
@@ -113,5 +114,11 @@ describe("game works correctly", () => {
         game.playerMoves.push(game.currentGame[0]);
         playerTurn();
         expect(game.score).toBe(1);
+    });
+    // Test if alert is called
+    test("should call an alert if the player moves wrong", () => {
+        game.playerMoves.push("wrong");
+        playerTurn();
+        expect(window.alert).toBeCalledWith("Wrong move!");
     });
 });
