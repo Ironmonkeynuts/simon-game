@@ -83,6 +83,12 @@ h2 {
     font-weight: 600;
 }
 
+.button:hover {
+    background-color:lightpink;
+    cursor: pointer;
+    color:black;
+}
+
 /* Highlight circle for observation by user */
 .light {
     opacity: 0.4;
